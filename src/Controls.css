@@ -1,0 +1,40 @@
+.Controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  width: 20vmin;
+  height: 20vmin;
+}
+
+.Controls div {
+  border: 1px solid #eee;
+  display: flex;
+  background: black;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.Controls .up {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.Controls .down {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.Controls .left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.Controls .right {
+  grid-column: 3;
+  grid-row: 2;
+}
