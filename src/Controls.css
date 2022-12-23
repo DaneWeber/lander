@@ -38,3 +38,7 @@
   grid-column: 3;
   grid-row: 2;
 }
+
+.Controls .active {
+  background: #e00;
+}
