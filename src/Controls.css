@@ -40,5 +40,9 @@
 }
 
 .Controls .active {
+  background: #ee0;
+}
+
+.Controls .warm {
   background: #e00;
 }
