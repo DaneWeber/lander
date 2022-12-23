@@ -53,6 +53,11 @@ function App() {
       }
 
       setActive(activeClone);
+      const newEvent = {
+        timestamp: Date.now(),
+        keystate: activeClone
+      }
+      addToKeyLog(newEvent);
     }
   }
 
