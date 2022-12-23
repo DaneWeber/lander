@@ -12,7 +12,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+	"postCreateCommand": "yarn install",
 
 	// Configure tool-specific properties.
 	"customizations": {
@@ -24,7 +24,8 @@
 				"GitHub.copilot",
 				"oderwat.indent-rainbow",
 				"Orta.vscode-jest",
-				"jock.svg"
+				"jock.svg",
+				"dsznajder.es7-react-js-snippets"
 			]
 		}
 	}
