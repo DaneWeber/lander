@@ -5,10 +5,19 @@ import useKeyPress from './hooks/useKeyPress';
 
 
 function App() {
-  const [active, setActive] = useState({up: '', left: '', down: '', right: ''});
-  const handleKeyDown = (event: { keyCode: React.SetStateAction<number>; preventDefault: () => void; }) => {
+  const [keyLog, setKeyLog] = useState<any[]>([]);
+  const addToKeyLog = (entry: { keystate: any; timestamp: number; }) => {
+    setKeyLog([...keyLog, entry]);
+  }
+
+  const [active, setActive] = useState({ up: '', left: '', down: '', right: '' });
+  const handleKeyDown = (event: {
+    [x: string]: any; keyCode: React.SetStateAction<number>; preventDefault: () => void;
+}) => {
     if (event.keyCode >= 37 && event.keyCode <= 40) {
       event.preventDefault();
+      if (event.repeat) return;
+
       let activeClone = Object.assign(Object.create(Object.getPrototypeOf(active)), active);
       switch (event.keyCode) {
         case 37: activeClone.left = 'active'; break;
@@ -21,6 +30,12 @@ function App() {
       });
 
       setActive(activeClone);
+
+      const newEvent = {
+        timestamp: Date.now(),
+        keystate: activeClone
+      }
+      addToKeyLog(newEvent);
     }
   }
 
@@ -47,8 +62,20 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Lander</h1>
-        <Controls active={active} />
       </header>
+      <section className="columns">
+        <div>
+          <Controls active={active} />
+        </div>
+        <div className="logs">
+          <p>Logs:</p>
+          <ul>
+            {keyLog.map((entry, index) => {
+              return <li key={index}>{JSON.stringify(entry)}</li>
+            })}
+          </ul>
+        </div>
+      </section>
     </div>
   );
 }
