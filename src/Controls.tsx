@@ -14,6 +14,9 @@ function Controls() {
         case 39: activeClone.right = 'active'; break;
         case 40: activeClone.down = 'active'; break;
       }
+      ['up', 'left', 'down', 'right'].forEach((key) => {
+        activeClone[key] = activeClone[key] === 'warm' ? '' : activeClone[key]
+      });
 
       setActive(activeClone);
     }
